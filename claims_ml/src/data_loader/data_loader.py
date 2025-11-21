@@ -72,20 +72,4 @@ class DataLoader:
                     ext=ext, supported_exts=SUPPORTED_FILE_EXTENSIONS
                 )
             )
-
-        try:
-            logger.info(f"Loading data from {self.file_path}")
-            data = pd.read_csv(self.file_path)
-            logger.info(f"Data loaded successfully from {self.file_path}")
-            return data
-        except pd.errors.EmptyDataError:
-            logger.error(f"No data: The file at {self.file_path} is empty.")
-            return None
-        except pd.errors.ParserError:
-            logger.error(
-                f"Parsing error: Could not parse the file at {self.file_path}."
-            )
-            return None
-        except Exception as e:
-            logger.error(f"An error occurred while loading data: {e}")
-            return None
+        return ext
